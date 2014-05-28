@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+#register-div {
+	height: 700px;
+	width: 600px;
+	margin: 0 auto;
+}
+
+.field-alert {
+	margin-left: 20px;
+	color: #EA0000;
+}

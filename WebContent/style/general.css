@@ -1,0 +1,104 @@
+@CHARSET "UTF-8";
+
+body {
+	margin: 0;
+	font-family: 'Microsoft YaHei UI', 'Microsoft YaHei', 'SimSun',
+		'Segoe UI', 'Lucida Grande', Verdana, Arial, sans-serif;
+	font-size: 13px;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:VISITED {
+	text-decoration: none;
+}
+
+.vertical-form {
+	margin-top: 30px;
+}
+
+.vertical-form label {
+	font-weight: bold;
+	display: block;
+	margin-bottom: 5px;
+}
+
+.vertical-form input {
+	width: 330px;
+	height: 24px;
+}
+
+.vertical-form select {
+	height: 24px;
+	width: 150px;
+}
+
+.vertical-form .form-row {
+	width: 100%;
+	height: 70px;
+}
+
+.vertical-form button {
+	background-color: #87CEFA;
+	font-weight: bolder;
+	font-family: 'Microsoft YaHei', 'SimSun';
+	color: #FFFFFF;
+	height: 30px;
+	width: 100px;
+	height: 30px;
+	color: #FFFFFF;
+}
+
+#head {
+	width: 100%;
+	height: 60px;
+	color: #FFFFFF;
+	background-color: #87CEFA;
+}
+
+#head div {
+	height: 100%;
+	margin-left: 15px;
+}
+
+#logo {
+	font-size: 40px;;
+	font-family: Georgia;
+	font-weight: bolder;
+	float: left;
+	padding-top: 3px;
+	width: 170px;
+}
+
+#query {
+	width: 300px;
+	float: left;
+}
+
+#query input {
+	height: 24px;
+	width: 250px;
+	margin-top: 17px;
+	border-width: 0px;
+}
+
+#queryCmd {
+	height: 26px;
+	margin-left: 0px;
+	margin-top: 17px;
+	background-color: #FFFFFF;
+	border-width: 0px;
+}
+
+#user-ctr {
+	width: 100px;
+	float: right;
+	float: right;
+	padding: 18px;
+}
+
+#user-ctr a {
+	color: #FFFFFF;
+}
