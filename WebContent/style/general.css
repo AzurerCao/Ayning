@@ -92,13 +92,19 @@ a:VISITED {
 	border-width: 0px;
 }
 
-#user-ctr {
+#head #user-ctr {
 	width: 100px;
+	height: 42px;
 	float: right;
-	float: right;
-	padding: 18px;
+	padding-top: 18px;
 }
 
 #user-ctr a {
 	color: #FFFFFF;
+}
+
+.content {
+	width: 1100px;
+	height: 700px;
+	margin: 0 auto;
 }

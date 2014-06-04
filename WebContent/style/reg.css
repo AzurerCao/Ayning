@@ -9,4 +9,21 @@
 .field-alert {
 	margin-left: 20px;
 	color: #EA0000;
+	display: none;
+}
+
+#validCode {
+	width: 100px;
+	vertical-align: middle;
+}
+
+#validImg {
+	margin-left: 20px;
+	vertical-align: middle;
+}
+
+#correctCode, #errorCode {
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
 }

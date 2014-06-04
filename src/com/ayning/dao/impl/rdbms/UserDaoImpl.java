@@ -3,6 +3,8 @@ package com.ayning.dao.impl.rdbms;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +15,9 @@ import com.ayning.vo.User;
 
 @Repository("userDao")
 public class UserDaoImpl extends BaseDao implements UserDao {
+
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(UserDaoImpl.class);
 
 	private static final String INSERT_USER = "INSERT INTO t_user(id, password, email, nickname, "
 			+ "birthdate, sex, mobile, location, company, job, reputation, intro, register_time, last_signin_time, activated, valid) "
@@ -37,20 +42,26 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
 	private static final String UPDATE_SIGNIN_TIME = "UPDATE t_user SET last_signin_time = CURRENT TIMESTAMP WHERE id = ?";
 
+	private static final String COUNT_BY_EMAIL = "SELECT COUNT(*) FROM t_user WHERE email = ?";
+
+	private static final String COUNT_BY_NAME = "SELECT COUNT(*) FROM t_user WHERE nickname = ?";
+
 	@Override
 	public String insert(User user) {
 		String pk = DBUtil.generateUUID();
 		String activated = user.isActivated() ? AyningConstant.STRING_TRUE
 				: AyningConstant.STRING_FALSE;
 
+		LOGGER.info(user.toString());
+
 		this.getJdbc().update(
 				INSERT_USER,
 				new Object[] { pk, user.getPassword(), user.getEmail(),
-						user.getNickName(), user.getBirthDate(), user.getSex(),
-						user.getMobile(), user.getLocation(),
-						user.getCompany(), user.getJob(), user.getReputation(),
-						user.getIntroduction(), activated,
-						AyningConstant.STRING_TRUE });
+						user.getNickName(), user.getBirthDate(),
+						String.valueOf(user.getSex()), user.getMobile(),
+						user.getLocation(), user.getCompany(), user.getJob(),
+						user.getReputation(), user.getIntroduction(),
+						activated, AyningConstant.STRING_TRUE });
 		return pk;
 	}
 
@@ -132,5 +143,21 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 	public User findByNickName(String nickName) {
 		return this.getJdbc().queryForObject(FIND_BY_NICKNAME, mapper,
 				new Object[] { nickName });
+	}
+
+	@Override
+	public int countByEmail(String email) {
+		return this
+				.getJdbc()
+				.queryForObject(COUNT_BY_EMAIL, Integer.class,
+						new Object[] { email }).intValue();
+	}
+
+	@Override
+	public int countByName(String nickName) {
+		return this
+				.getJdbc()
+				.queryForObject(COUNT_BY_NAME, Integer.class,
+						new Object[] { nickName }).intValue();
 	}
 }

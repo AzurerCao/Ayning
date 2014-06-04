@@ -32,7 +32,7 @@ public interface UserDao {
 	public User findByEmail(String email);
 
 	public User findByNickName(String nickName);
-	
+
 	/**
 	 * Deactivate a user, the id property of this user object has to be set
 	 * 
@@ -63,4 +63,20 @@ public interface UserDao {
 	 * @param user
 	 */
 	public void updateSigninTime(User user);
+
+	/**
+	 * Get the number of row by email
+	 * 
+	 * @param email
+	 * @return the number of qualified row
+	 */
+	public int countByEmail(String email);
+
+	/**
+	 * Get the number of row by nickName
+	 * 
+	 * @param email
+	 * @return the number of qualified row
+	 */
+	public int countByName(String nickName);
 }

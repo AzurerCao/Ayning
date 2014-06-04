@@ -153,4 +153,16 @@ public class User {
 	public void setReputation(int reputation) {
 		this.reputation = reputation;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", nickName=" + nickName
+				+ ", location=" + location + ", sex=" + sex + ", birthDate="
+				+ birthDate + ", mobile=" + mobile + ", introduction="
+				+ introduction + ", registerTime=" + registerTime
+				+ ", lastSignTime=" + lastSignTime + ", activated=" + activated
+				+ ", company=" + company + ", job=" + job + ", reputation="
+				+ reputation + "]";
+	}
+
 }

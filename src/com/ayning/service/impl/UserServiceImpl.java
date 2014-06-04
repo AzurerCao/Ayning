@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
 		try {
 			encryption = SecurityUtil.encryptMD5(user.getPassword());
 		} catch (NoSuchAlgorithmException e) {
-			throw new AyningException("¶ÔÃÜÂë½øĞĞ¼ÓÃÜ´íÎó:" + e.getMessage());
+			throw new AyningException("å¯¹å¯†ç è¿›è¡ŒåŠ å¯†é”™è¯¯:" + e.getMessage());
 		}
 
 		user.setPassword(encryption);
@@ -69,19 +69,19 @@ public class UserServiceImpl implements UserService {
 		User u = this.userDao.findByEmail(user.getEmail());
 		// verify user
 		if (u == null) {
-			throw new InvalidUserException("¸ÃÓÃ»§²»´æÔÚ");
+			throw new InvalidUserException("è¯¥ç”¨æˆ·ä¸å­˜åœ¨");
 		}
 
 		String encryption = null;
 		try {
 			encryption = SecurityUtil.encryptMD5(user.getPassword());
 		} catch (NoSuchAlgorithmException e) {
-			throw new AyningException("ÎŞ·¨¼ÓÃÜÃ÷ÎÄÃÜÂë: " + e.getMessage());
+			throw new AyningException("å¯¹å¯†ç è¿›è¡ŒåŠ å¯†é”™è¯¯: " + e.getMessage());
 		}
 
 		// verify password
 		if (encryption != u.getPassword()) {
-			throw new InvalidUserException("ÃÜÂë²»ÕıÈ·");
+			throw new InvalidUserException("å¯†ç ä¸æ­£ç¡®");
 		}
 	}
 
@@ -94,7 +94,7 @@ public class UserServiceImpl implements UserService {
 	public User signIn(User user) throws AyningException {
 		if (StringUtils.isEmpty(user.getEmail())
 				|| StringUtils.isEmpty(user.getPassword())) {
-			throw new AyningException("ÓÃ»§ÃûºÍÃÜÂë²»ÄÜÎª¿Õ");
+			throw new AyningException("é‚®ç®±å’Œå¯†ç ä¸èƒ½ä¸ºç©º");
 		}
 
 		// auth user
@@ -129,8 +129,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean existEmail(User user) {
-		User user2 = this.userDao.findByEmail(user.getEmail());
-		if (user2 == null) {
+		int num = this.userDao.countByEmail(user.getEmail());
+		if (num == 0) {
 			return false;
 		} else {
 			return true;
@@ -139,8 +139,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean existNickName(User user) {
-		User user2 = this.userDao.findByNickName(user.getNickName());
-		if (user2 == null) {
+		int num = this.userDao.countByName(user.getNickName());
+		if (num == 0) {
 			return false;
 		} else {
 			return true;
