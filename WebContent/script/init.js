@@ -1,0 +1,6 @@
+/**
+ * 
+ */
+function getContextPath() {
+	return "ayning\\";
+}
